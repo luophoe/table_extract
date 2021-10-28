@@ -1,0 +1,50 @@
+register ao_mem_operation {
+
+	field	operation_start {
+		bits	1;
+		access	rw;
+		reset	'h0;
+	}
+
+
+	field	operation_select {
+		bits	1;
+		access	rw;
+		reset	'b0;
+	}
+
+
+	field	operation_addr {
+		bits	6;
+		access	rw;
+		reset	'b101;
+	}
+
+
+	field	reserved_1 {
+		bits	24;
+		access	ro;
+		reset	'b0;
+	}
+
+
+}
+
+register ao_mem_wr_data {
+
+	field	wdata {
+		bits	32;
+		access	rw;
+		reset	'b1;
+	}
+
+
+}
+
+block ao_mem {
+	bytes	2;
+
+	register	ao_mem_operation	(ao_mem_operation_bd)	@'h00;
+	register	ao_mem_wr_data	(ao_mem_wr_data_bd)	@'h04;
+
+}
